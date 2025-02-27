@@ -1,0 +1,1226 @@
+{
+	"info": {
+		"_postman_id": "ab9c0a05-4b2e-45ff-afaa-d6bb14af0ac5",
+		"name": "Garage",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12955931"
+	},
+	"item": [
+		{
+			"name": "Signup_validation",
+			"item": [
+				{
+					"name": "[N] Signup(empty email)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[N] Signup(invalid email)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"test\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[N] Signup(Passwords don't match)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[N] Signup(empty name)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[N] Signup(empty payload)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
+									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Response time is less than 3000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[P] Signup",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Header content-type present\", function () {",
+							"    pm.response.to.have.header(\"Content-type\")",
+							"",
+							"});",
+							"",
+							"if (pm.response.text().length !== 0) {",
+							"",
+							"    var schema = {",
+							"",
+							"        \"type\": \"object\",",
+							"        \"properties\": {",
+							"            \"status\": {",
+							"                \"type\": \"string\",",
+							"                \"enum\": [\"ok\", \"error\"]",
+							"            },",
+							"            \"data\": {",
+							"                \"type\": \"object\",",
+							"                \"properties\": {",
+							"                    \"userId\": {",
+							"                        \"type\": \"integer\",",
+							"                        \"minimum\": 1,",
+							"                        \"description\": \"Id of created user\"",
+							"                    },",
+							"                    \"distanceUnits\": {",
+							"                        \"type\": \"string\",",
+							"                        \"enum\": [\"km\", \"ml\"],",
+							"                        \"default\": \"km\"",
+							"                    },",
+							"                    \"currency\": {",
+							"                        \"type\": \"string\",",
+							"                        \"enum\": [\"eur\", \"gbp\", \"usd\", \"uah\", \"pln\"],",
+							"                        \"default\": \"usd\"",
+							"",
+							"                    }",
+							"                },",
+							"                \"required\": [\"userId\", \"distanceUnits\", \"currency\"]",
+							"",
+							"            }",
+							"        },",
+							"        \"required\": [\"status\", \"data\"]",
+							"",
+							"    }",
+							"",
+							"    pm.test(\"Schema is valid\", function () {",
+							"        pm.response.to.have.jsonSchema(schema);",
+							"    });",
+							"",
+							"    pm.test(\"Status OK\", function () {",
+							"        var jsonData = pm.response.json();",
+							"        pm.expect(jsonData.status).to.equal(\"ok\");",
+							"    });",
+							"",
+							"    pm.test(\"Set User ID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.collectionVariables.set(\"user_id\", jsonData.data.userId);",
+							"",
+							"    pm.test(\"Response time is less than 2000ms\", function () {",
+							"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"    });",
+							"});",
+							"",
+							"} else {",
+							"    console.log(\"JSON is empty\");",
+							"}",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"",
+							"var randomEmail = pm.variables.replaceIn(\"{{$randomEmail}}\");",
+							"",
+							"pm.collectionVariables.set(\"user_email\", randomEmail);",
+							"",
+							"pm.test(\"Email Created Pattern test\", function () {",
+							"    pm.expect(randomEmail).to.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/);",
+							"});",
+							"",
+							"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/signup",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Signin",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status OK\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.status).to.equal(\"ok\");",
+							"});",
+							"",
+							"pm.test(\"User ID check\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var userId = pm.collectionVariables.get(\"user_id\");",
+							"    pm.expect(jsonData.data.userId).to.equal(userId);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_pass}}\",\n  \"remember\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/signin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Update_user_photo",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"mock_photo_name\", pm.variables.replaceIn(\"user-\" + \"{{$randomInt}}\" + \".jpg\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Image is correrct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var updatedImage = pm.collectionVariables.get(\"mock_photo_name\")",
+							"    pm.expect(jsonData.data.photoFilename).to.eql(updatedImage);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"photo\": \"{{mock_photo_name}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/profile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Update_user_name",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"mock_first_name\", pm.variables.replaceIn(\"{{$randomFirstName}}\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"fName is correrct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var updatedfName = pm.collectionVariables.get(\"mock_first_name\")",
+							"    pm.expect(jsonData.data.name).to.eql(updatedfName);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"{{mock_first_name}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/profile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Update_user_lastname",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"mock_last_name\", pm.variables.replaceIn(\"{{$randomLastName}}\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"lName is correrct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var updatedlName = pm.collectionVariables.get(\"mock_last_name\")",
+							"    pm.expect(jsonData.data.lastName).to.eql(updatedlName);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 3000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"lastName\": \"{{mock_last_name}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/profile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Update_userbdate",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var randomBDate = pm.variables.replaceIn(\"{{$isoTimestamp}}\");",
+							"pm.collectionVariables.set(\"user_b-date\", randomBDate);",
+							"",
+							"",
+							"pm.test(\"B-Date Created Pattern test\", function () {",
+							"    pm.expect(randomBDate).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 3000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \n    \"dateBirth\": \"{{mock_date}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/profile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Update_user_country",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"mock_country\", pm.variables.replaceIn(\"{{$randomCountry}}\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Country is correrct\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var updatedCountry = pm.collectionVariables.get(\"mock_country\")",
+							"    pm.expect(jsonData.data.country).to.eql(updatedCountry);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"country\": \"{{mock_country}}\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/profile",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Update_user_pass",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"User ID check\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var userId = pm.collectionVariables.get(\"user_id\");",
+							"    pm.expect(jsonData.data.userId).to.equal(userId);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"new_user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"oldPassword\": \"{{user_pass}}\",\n  \"password\": \"{{new_user_pass}}\",\n  \"repeatPassword\": \"{{new_user_pass}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/password",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Addcar",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Set CarID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.collectionVariables.set(\"car_id\", jsonData.data.id)",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"carBrandId\": {{brand_Id}},\n  \"carModelId\": {{model_Id}},\n  \"mileage\": {{mock_milliage}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/cars",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Add Expense",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var updatedMilliage = Number(pm.collectionVariables.get(\"mock_milliage\")) + 1;",
+							"pm.collectionVariables.set(\"updated_milliage\", updatedMilliage);",
+							"",
+							"var updatedLitters = Number(pm.collectionVariables.get(\"mocklitters\")) + 1;",
+							"pm.collectionVariables.set(\"updated_litters\", updatedLitters);",
+							"",
+							"var totalCost = Number(pm.collectionVariables.get(\"mockcoast\")) + 1;",
+							"pm.collectionVariables.set(\"updated_coast\", totalCost);",
+							"",
+							"var moment = require('moment');",
+							"pm.collectionVariables.set(\"current_date\", moment().format(\"YYYY-MM-DD\"));",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Set expenseID\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.collectionVariables.set(\"expense_id\", jsonData.data.id)",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"carId\": {{car_id}},\n  \"reportedAt\": \"{{current_date}}\",\n  \"mileage\": {{updated_milliage}},\n  \"liters\": {{updated_litters}},\n  \"totalCost\": {{updated_coast}},\n  \"forceMileage\": false\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/expenses",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Update expenses",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var updatedMilliage = Number(pm.collectionVariables.get(\"updated_milliage\")) + 1;",
+							"pm.collectionVariables.set(\"updated_milliage\", updatedMilliage);",
+							"",
+							"var updatedLitters = Number(pm.collectionVariables.get(\"updated_litters\")) + 1;",
+							"pm.collectionVariables.set(\"updated_litters\", updatedLitters);",
+							"",
+							"var totalCost = Number(pm.collectionVariables.get(\"updated_coast\")) + 1;",
+							"pm.collectionVariables.set(\"updated_coast\", totalCost);",
+							"",
+							"var moment = require('moment');",
+							"pm.collectionVariables.set(\"current_date\", moment().format(\"YYYY-MM-DD\"));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"carId\": {{car_id}},\n  \"reportedAt\": \"{{current_date}}\",\n  \"mileage\": {{updated_milliage}},\n  \"liters\": {{updated_litters}},\n  \"totalCost\": {{updated_coast}},\n  \"forceMileage\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/expenses/{{expense_id}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"expenses",
+						"{{expense_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[P] Delete_user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 2000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{envPass}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{envLog}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "user_email",
+			"value": ""
+		},
+		{
+			"key": "user_pass",
+			"value": ""
+		},
+		{
+			"key": "mock_photo_name",
+			"value": ""
+		},
+		{
+			"key": "mock_first_name",
+			"value": ""
+		},
+		{
+			"key": "mock_last_name",
+			"value": ""
+		},
+		{
+			"key": "mock_date",
+			"value": ""
+		},
+		{
+			"key": "mock_country",
+			"value": ""
+		},
+		{
+			"key": "brand_Id",
+			"value": ""
+		},
+		{
+			"key": "model_Id",
+			"value": ""
+		},
+		{
+			"key": "mock_milliage",
+			"value": ""
+		},
+		{
+			"key": "user_b-date",
+			"value": ""
+		},
+		{
+			"key": "user_id",
+			"value": ""
+		},
+		{
+			"key": "new_user_pass",
+			"value": ""
+		},
+		{
+			"key": "car_id",
+			"value": ""
+		},
+		{
+			"key": "mocklitters",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "mockcoast",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "updated_milliage",
+			"value": ""
+		},
+		{
+			"key": "updated_litters",
+			"value": ""
+		},
+		{
+			"key": "total_cost",
+			"value": ""
+		},
+		{
+			"key": "updated_coast",
+			"value": ""
+		},
+		{
+			"key": "current_date",
+			"value": ""
+		},
+		{
+			"key": "expense_id",
+			"value": ""
+		}
+	]
+}
