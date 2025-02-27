@@ -1,0 +1,17 @@
+mock_first_name,mock_last_name,user_email,user_pass,repeat_pass,url
+John,Conor,jconor1001@gmail.com,123Abcd!@,123Abcd!@,https://qauto2.forstudy.space/api
+,Conor,jconor1001@gmail.com,123Abcd!@,123Abcd!@,https://qauto2.forstudy.space/api
+John,,jconor1001@gmail.com,123Abcd!@,123Abcd!@,https://qauto2.forstudy.space/api
+John,Conor,,123Abcd!@,123Abcd!@,https://qauto2.forstudy.space/api
+John,Conor,jconor1001,123Abcd!@,123Abcd!@,https://qauto2.forstudy.space/api
+John,Conor,jconor1001@gmail.com,,123Abcd!@,https://qauto2.forstudy.space/api
+John,Conor,jconor1001@gmail.com,123Abcd!@,,https://qauto2.forstudy.space/api
+John,Conor,jconor1001@gmail.com,223Abcd!@,123Abcd!@,https://qauto2.forstudy.space/api
+John,Conor,jconor1001@gmail.com,123Abcd!@,123Abcd!@,https://qauto.forstudy.space/api
+,Conor,jconor1001@gmail.com,123Abcd!@,123Abcd!@,https://qauto.forstudy.space/api
+John,,jconor1001@gmail.com,123Abcd!@,123Abcd!@,https://qauto.forstudy.space/api
+John,Conor,,123Abcd!@,123Abcd!@,https://qauto.forstudy.space/api
+John,Conor,jconor1001@gmail.com,123Abcd!@,123Abcd!@,https://qauto.forstudy.space/api
+John,Conor,jconor1001@gmail.com,,123Abcd!@,https://qauto.forstudy.space/api
+John,Conor,jconor1001@gmail.com,123Abcd!@,,https://qauto.forstudy.space/api
+John,Conor,jconor1001@gmail.com,223Abcd!@,123Abcd!@,https://qauto.forstudy.space/api

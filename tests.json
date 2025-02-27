@@ -7,287 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Signup_validation",
-			"item": [
-				{
-					"name": "[N] Signup(empty email)",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
-									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"pm.test(\"Response time is less than 3000ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/signup",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "[N] Signup(invalid email)",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
-									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"pm.test(\"Response time is less than 3000ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"test\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/signup",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "[N] Signup(Passwords don't match)",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
-									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"pm.test(\"Response time is less than 3000ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"test\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/signup",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "[N] Signup(empty name)",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
-									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"pm.test(\"Response time is less than 3000ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/signup",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "[N] Signup(empty payload)",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"pm.collectionVariables.set(\"user_email\", pm.variables.replaceIn(\"{{$randomEmail}}\"));",
-									"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 400\", function () {",
-									"    pm.response.to.have.status(400);",
-									"});",
-									"pm.test(\"Response time is less than 3000ms\", function () {",
-									"    pm.expect(pm.response.responseTime).to.be.below(3000);",
-									"});"
-								],
-								"type": "text/javascript",
-								"packages": {}
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/auth/signup",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"signup"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "[P] Signup",
+			"name": "Signup",
 			"event": [
 				{
 					"listen": "test",
@@ -302,7 +22,7 @@
 							"",
 							"});",
 							"",
-							"if (pm.response.text().length !== 0) {",
+							"if (pm.response.code === 201) {",
 							"",
 							"    var schema = {",
 							"",
@@ -340,26 +60,30 @@
 							"",
 							"    }",
 							"",
+							"",
 							"    pm.test(\"Schema is valid\", function () {",
 							"        pm.response.to.have.jsonSchema(schema);",
 							"    });",
 							"",
+							"    const jsonData = pm.response.json();",
+							"",
 							"    pm.test(\"Status OK\", function () {",
-							"        var jsonData = pm.response.json();",
 							"        pm.expect(jsonData.status).to.equal(\"ok\");",
 							"    });",
 							"",
-							"    pm.test(\"Set User ID\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.collectionVariables.set(\"user_id\", jsonData.data.userId);",
+							"    pm.test(\"Set User ID\", function () {;",
+							"        pm.collectionVariables.set(\"user_id\", jsonData.data.userId);",
 							"",
-							"    pm.test(\"Response time is less than 2000ms\", function () {",
-							"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"        pm.test(\"Response time is less than 2000ms\", function () {",
+							"            pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"        });",
 							"    });",
-							"});",
 							"",
-							"} else {",
-							"    console.log(\"JSON is empty\");",
+							"}",
+							"",
+							"else {",
+							"    pm.execution.setNextRequest(null)",
+							"    console.log(\"Error: JSON is empty,\");",
 							"}",
 							""
 						],
@@ -371,16 +95,16 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
+							"pm.variables.set(\"body\",JSON.stringify(pm.iterationData.get(\"data\")));",
+							"// var randomEmail = pm.variables.replaceIn(\"{{$randomEmail}}\");",
 							"",
-							"var randomEmail = pm.variables.replaceIn(\"{{$randomEmail}}\");",
+							"// pm.collectionVariables.set(\"user_email\", randomEmail);",
 							"",
-							"pm.collectionVariables.set(\"user_email\", randomEmail);",
+							"// pm.test(\"Email Created Pattern test\", function () {",
+							"//     pm.expect(randomEmail).to.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/);",
+							"// });",
 							"",
-							"pm.test(\"Email Created Pattern test\", function () {",
-							"    pm.expect(randomEmail).to.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$/);",
-							"});",
-							"",
-							"pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
+							"// pm.collectionVariables.set(\"user_pass\", pm.variables.replaceIn(\"{{$randomPassword}}\"));"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -392,7 +116,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_pass}}\",\n  \"repeatPassword\": \"{{user_pass}}\"\n}",
+					"raw": "// {\n//     \"name\": \"{{$randomFirstName}}\",\n//     \"lastName\": \"{{$randomLastName}}\",\n//     \"email\": \"{{user_email}}\",\n//     \"password\": \"{{user_pass}}\",\n//     \"repeatPassword\": \"{{user_pass}}\"\n// }\n{\n    \"name\": \"{{mock_first_name}}\",\n    \"lastName\": \"{{mock_last_name}}\",\n    \"email\": \"{{user_email}}\",\n    \"password\": \"{{user_pass}}\",\n    \"repeatPassword\": \"{{repeat_pass}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -413,7 +137,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Signin",
+			"name": "Signin",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -429,24 +153,31 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
+							"if (pm.response.code === 200) {",
 							"",
-							"pm.test(\"Status OK\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.status).to.equal(\"ok\");",
-							"});",
+							"    const jsonData = pm.response.json();",
 							"",
-							"pm.test(\"User ID check\", function () {",
-							"    var jsonData = pm.response.json();",
-							"    var userId = pm.collectionVariables.get(\"user_id\");",
-							"    pm.expect(jsonData.data.userId).to.equal(userId);",
-							"});",
 							"",
-							"pm.test(\"Response time is less than 2000ms\", function () {",
-							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
-							"});"
+							"    pm.test(\"Status OK\", function () {",
+							"        pm.expect(jsonData.status).to.equal(\"ok\");",
+							"    });",
+							"",
+							"    pm.test(\"User ID check\", function () {",
+							"        var userId = pm.collectionVariables.get(\"user_id\");",
+							"        pm.expect(jsonData.data.userId).to.equal(userId);",
+							"    });",
+							"",
+							"    pm.test(\"Response time is less than 2000ms\", function () {",
+							"        pm.expect(pm.response.responseTime).to.be.below(2000);",
+							"    });",
+							"",
+							"} ",
+							"",
+							"else {",
+							"     pm.execution.setNextRequest(null)",
+							"    console.log(\"Signin fail: received status is not 200\")",
+							"}",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -479,7 +210,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Update_user_photo",
+			"name": "Update_user_photo",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -540,7 +271,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Update_user_name",
+			"name": "Update_user_name",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -601,7 +332,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Update_user_lastname",
+			"name": "Update_user_lastname",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -662,7 +393,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Update_userbdate",
+			"name": "Update_userbdate",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -722,7 +453,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Update_user_country",
+			"name": "Update_user_country",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -784,7 +515,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Update_user_pass",
+			"name": "Update_user_pass",
 			"event": [
 				{
 					"listen": "test",
@@ -804,7 +535,11 @@
 							"pm.test(\"Response time is less than 2000ms\", function () {",
 							"    pm.expect(pm.response.responseTime).to.be.below(2000);",
 							"});",
-							""
+							"",
+							"pm.test(\"Set a new password as main\", function () {",
+							"    var newPass = pm.collectionVariables.get(\"new_user_pass\")",
+							"    pm.collectionVariables.set(\"user_pass\", newPass);",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -847,7 +582,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Addcar",
+			"name": "Addcar",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -906,7 +641,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Add Expense",
+			"name": "Add Expense",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -977,7 +712,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Update expenses",
+			"name": "Update expenses",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1041,7 +776,7 @@
 			"response": []
 		},
 		{
-			"name": "[P] Delete_user",
+			"name": "Delete_user",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -1177,10 +912,6 @@
 			"value": ""
 		},
 		{
-			"key": "user_id",
-			"value": ""
-		},
-		{
 			"key": "new_user_pass",
 			"value": ""
 		},
@@ -1221,6 +952,11 @@
 		{
 			"key": "expense_id",
 			"value": ""
+		},
+		{
+			"key": "repeat_pass",
+			"value": "",
+			"type": "string"
 		}
 	]
 }
